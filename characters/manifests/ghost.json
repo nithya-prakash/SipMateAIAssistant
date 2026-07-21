@@ -1,0 +1,13 @@
+{
+    "id": "ghost",
+    "renderer": "vector",
+    "behavior": "float",
+    "personality": "spooky",
+    "messages": [
+        "Boo! \ud83d\udc7b\nDid I scare you into drinking water?"
+    ],
+    "effects": [
+        "fade"
+    ],
+    "duration": 10
+}

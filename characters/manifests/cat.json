@@ -1,0 +1,15 @@
+{
+    "id": "cat",
+    "renderer": "vector",
+    "behavior": "walk_across",
+    "personality": "lazy",
+    "messages": [
+        "Meow \ud83d\ude3a\nEven cats need water.",
+        "Purrfect time for a drink!"
+    ],
+    "effects": [
+        "tail_swish",
+        "blink"
+    ],
+    "duration": 15
+}

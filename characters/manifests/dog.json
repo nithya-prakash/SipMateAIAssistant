@@ -1,0 +1,14 @@
+{
+    "id": "dog",
+    "renderer": "vector",
+    "behavior": "walk_across",
+    "personality": "playful",
+    "messages": [
+        "Woof! Did you drink water today?",
+        "Fetch some water!"
+    ],
+    "effects": [
+        "tail_wag"
+    ],
+    "duration": 12
+}

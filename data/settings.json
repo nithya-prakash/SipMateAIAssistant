@@ -1,0 +1,11 @@
+{
+    "ai_adaptive_scheduling_enabled": false,
+    "ai_dynamic_messages_enabled": true,
+    "sound_enabled": false,
+    "reminder_interval_minutes": 60,
+    "working_hours_enabled": false,
+    "working_hours_start": 9,
+    "working_hours_end": 17,
+    "paused": false,
+    "dark_mode": true
+}

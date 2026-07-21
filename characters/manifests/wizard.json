@@ -1,0 +1,13 @@
+{
+    "id": "wizard",
+    "renderer": "vector",
+    "behavior": "teleport",
+    "personality": "wise",
+    "messages": [
+        "A wizard is never dehydrated. \ud83e\uddd9\u200d\u2642\ufe0f"
+    ],
+    "effects": [
+        "magic_sparkles"
+    ],
+    "duration": 12
+}

@@ -1,0 +1,13 @@
+{
+    "id": "panda",
+    "renderer": "vector",
+    "behavior": "appear_center",
+    "personality": "chill",
+    "messages": [
+        "Take a bamboo... I mean water break. \ud83d\udc3c"
+    ],
+    "effects": [
+        "chew"
+    ],
+    "duration": 12
+}

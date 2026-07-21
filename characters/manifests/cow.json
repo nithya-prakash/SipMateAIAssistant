@@ -1,0 +1,13 @@
+{
+    "id": "cow",
+    "renderer": "vector",
+    "behavior": "walk_across",
+    "personality": "funny",
+    "messages": [
+        "Mooooove to the water bottle! \ud83d\udc04"
+    ],
+    "effects": [
+        "chew"
+    ],
+    "duration": 15
+}

@@ -1,0 +1,13 @@
+{
+    "id": "rocket",
+    "renderer": "vector",
+    "behavior": "launch_upward",
+    "personality": "energetic",
+    "messages": [
+        "Blast off to hydration! \ud83d\ude80"
+    ],
+    "effects": [
+        "fire_particles"
+    ],
+    "duration": 8
+}

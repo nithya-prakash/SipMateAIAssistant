@@ -1,0 +1,13 @@
+{
+    "id": "dragon",
+    "renderer": "vector",
+    "behavior": "fly_across",
+    "personality": "fierce",
+    "messages": [
+        "Quench your fire with water! \ud83d\udc09"
+    ],
+    "effects": [
+        "breathe_fire"
+    ],
+    "duration": 12
+}

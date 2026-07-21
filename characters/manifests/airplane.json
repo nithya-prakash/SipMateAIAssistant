@@ -1,0 +1,15 @@
+{
+    "id": "airplane",
+    "renderer": "vector",
+    "behavior": "fly_across",
+    "personality": "professional",
+    "messages": [
+        "Hydration flight incoming \ud83d\udca7\nDrink some water!",
+        "Cruising altitude reached.\nTime for a water break!"
+    ],
+    "effects": [
+        "smoke_trail",
+        "propeller"
+    ],
+    "duration": 15
+}

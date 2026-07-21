@@ -1,0 +1,13 @@
+{
+    "id": "penguin",
+    "renderer": "vector",
+    "behavior": "walk_across",
+    "personality": "cool",
+    "messages": [
+        "Stay cool. Drink water. \ud83d\udc27"
+    ],
+    "effects": [
+        "waddle"
+    ],
+    "duration": 15
+}

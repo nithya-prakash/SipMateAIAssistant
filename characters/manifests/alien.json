@@ -1,0 +1,13 @@
+{
+    "id": "alien",
+    "renderer": "vector",
+    "behavior": "float",
+    "personality": "quirky",
+    "messages": [
+        "Greetings Earthling.\nConsume H2O. \ud83d\udc7d"
+    ],
+    "effects": [
+        "hover"
+    ],
+    "duration": 10
+}

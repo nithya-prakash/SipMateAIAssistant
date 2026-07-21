@@ -1,0 +1,14 @@
+{
+    "id": "girl",
+    "renderer": "vector",
+    "behavior": "walk_to_center",
+    "personality": "caring",
+    "messages": [
+        "I needed my water break.\nYou need yours too \ud83d\udc99"
+    ],
+    "effects": [
+        "sip_water",
+        "wave"
+    ],
+    "duration": 10
+}

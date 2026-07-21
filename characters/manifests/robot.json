@@ -1,0 +1,14 @@
+{
+    "id": "robot",
+    "renderer": "vector",
+    "behavior": "teleport",
+    "personality": "robotic",
+    "messages": [
+        "Beep boop.\nLiquid coolant levels low. Please refill.",
+        "System check:\nHydration required."
+    ],
+    "effects": [
+        "glitch"
+    ],
+    "duration": 10
+}
