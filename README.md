@@ -1,4 +1,4 @@
-# Hydra 💧
+# Hydra 
 **AI-Powered Animated Wellness Companion**
 
 Hydra is not just another boring notification app. It's a magical desktop companion built for macOS that reminds you to hydrate through delightful, non-intrusive animated characters that float across your screen. 
@@ -7,7 +7,7 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 
 ---
 
-## 🚀 Features
+##  Features
 
 - **15 Unique Animated Characters**: From a propeller-spinning airplane to a fire-breathing dragon, every reminder is a surprise.
 - **Unobtrusive Overlay**: Characters float natively over full-screen applications (like VS Code, Chrome, or Spotify) without stealing your keyboard focus or cluttering your Dock.
@@ -15,7 +15,7 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 - **Dynamic Messaging**: Characters have personalities! Messages adapt based on your current hydration streak and the time of day.
 - **Rich Insights Dashboard**: Track your consistency, best hydration hours, and missed times.
 
-## 📸 Screenshots
+##  Screenshots
 
 *(Placeholder for Screenshots)*
 - *A GIF of the Rocket launching across a VS Code window.*
@@ -23,7 +23,7 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 Hydra is completely background-driven, utilizing `PySide6` for its UI layer and raw `macOS AppKit` APIs to manipulate the window server.
 
@@ -47,7 +47,7 @@ graph TD
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 1. Clone the repository:
    ```bash
@@ -73,7 +73,7 @@ graph TD
 
 ---
 
-## 🤖 AI Features
+##  AI Features
 
 Hydra puts privacy first. It does not send your data to the cloud.
 - **Insights Engine**: Parses your local SQLite history to calculate consistency metrics.
@@ -82,7 +82,7 @@ Hydra puts privacy first. It does not send your data to the cloud.
 
 ---
 
-## 🎨 Character Engine
+##  Character Engine
 
 Hydra's characters are completely data-driven. Adding a new character takes only a few lines in a JSON manifest!
 
@@ -101,7 +101,7 @@ The renderer dynamically attaches `QPropertyAnimation` sequences like `launch_up
 
 ---
 
-## 🛣️ Future Roadmap
+##  Future Roadmap
 
 - Additional character packs (Seasonal: Santa, Ghost).
 - Sound pack expansions.
