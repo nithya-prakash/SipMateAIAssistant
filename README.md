@@ -17,9 +17,9 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 
 ##  Screenshots
 
-<img width="1470" height="956" alt="Screenshot 2026-07-26 at 12 35 40" src="https://github.com/user-attachments/assets/1b41e26c-d3a2-404c-92a8-0bf4f9c83a00" />
-
 <img width="1470" height="956" alt="Screenshot 2026-07-26 at 12 35 06" src="https://github.com/user-attachments/assets/6b4d2f23-bac2-42a8-b8b5-398058d0ca9c" />
+
+<img width="1470" height="956" alt="Screenshot 2026-07-26 at 12 35 40" src="https://github.com/user-attachments/assets/1b41e26c-d3a2-404c-92a8-0bf4f9c83a00" />
 
 ---
 
