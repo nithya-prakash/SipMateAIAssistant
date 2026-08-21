@@ -9,11 +9,13 @@ Powered by local AI and strict macOS overlay policies, SipMate ensures you stay 
 
 ##  Features
 
-- **15 Unique Animated Characters**: From a propeller-spinning airplane to a fire-breathing dragon, every reminder is a surprise.
-- **Soft, Disney-style Motion**: Characters fly and walk in on arced, bouncy paths (not flat linear slides), land with a squash-and-stretch bounce, and are shaded with soft gradient highlights and a grounding drop shadow instead of flat vector fills.
+- **8 SipMate Originals**: Dog, Ghost, Aeroplane, Cat, Penguin, Frog, Rocket, and Sloth - each a real illustrated Lottie animation with its own personality, sound effect, and entrance behavior.
+- **Soft, Disney-style Motion**: Characters cross the full screen on arced, bouncy paths (not flat linear slides) and land with a squash-and-stretch bounce; any character without illustrated artwork yet falls back gracefully to hand-drawn vector art or a soft gradient emoji badge instead of breaking.
+- **A Sound for Every Character**: Each reminder plays its own short sound effect - a bark, a meow, a launch whoosh - toggleable from Settings.
+- **Character Collection & Selection Modes**: Browse, favorite, preview, and pick a character from a dedicated collection window; choose Random, Single Character, Daily Rotation, Favorites, or SipMate Originals-only from Settings.
 - **Unobtrusive Overlay**: Characters float natively over full-screen applications (like VS Code, Chrome, or Spotify) without stealing your keyboard focus or cluttering your Dock.
 - **AI Adaptive Scheduling**: SipMate learns your habits. A local Logistic Regression model analyzes when you accept or skip water breaks and dynamically adjusts the schedule to your optimal hydration times.
-- **Dynamic Messaging**: Characters have personalities! Messages adapt based on your current hydration streak and the time of day.
+- **Dynamic Messaging**: Characters have personalities! Messages adapt based on your current hydration streak and the time of day, and never repeat the same line twice in a row.
 - **Rich Insights Dashboard**: Track your consistency, best hydration hours, and missed times.
 
 ##  Demo
@@ -34,7 +36,7 @@ graph TD
     B --> C{AI Adaptive Scheduler}
     C -->|Trigger| D[Overlay Window]
     D --> E[Character Rendering Pipeline]
-    E --> F[Vector Assets / JSON Manifests]
+    E --> F[Lottie / Vector / Emoji Fallback, per JSON Manifest]
     D --> G[SQLite Hydration Tracker]
     G --> C
 ```
@@ -89,27 +91,39 @@ SipMate puts privacy first. It does not send your data to the cloud.
 
 ##  Character Engine
 
-SipMate's characters are completely data-driven. Adding a new character takes only a few lines in a JSON manifest!
+SipMate's characters are completely data-driven - the `CharacterRegistry` loads every manifest in `characters/manifests/`, and `RendererFactory` picks how each one gets drawn. Adding a new character takes only a JSON file, no code changes:
 
 ```json
 {
- "id": "rocket",
- "renderer": "vector",
- "behavior": "launch_upward",
- "personality": "energetic",
- "messages": ["Blast off to hydration! 🚀"],
- "effects": ["fire_particles"],
- "duration": 8
+  "id": "rocket",
+  "name": "Rocket",
+  "emoji": "🚀",
+  "category": "sipmate_original",
+  "personality": "Energetic, motivational",
+  "renderer": "lottie",
+  "asset": "rocket.json",
+  "movement_style": "launch_upward",
+  "animation_type": "launch",
+  "messages": [
+    "3… 2… 1… HYDRATE!",
+    "Prepare for hydration launch!",
+    "Fuel your body for liftoff!",
+    "Mission objective: drink water!"
+  ],
+  "sound": "rocket.mp3"
 }
 ```
-The renderer dynamically attaches `QPropertyAnimation` sequences like `launch_upward`, `fly_across`, or `walk_to_center` based on the JSON configuration.
+
+- **`renderer`** is `"lottie"` for a real illustrated animation (`asset` points to a file in `assets/characters/`), or `"static_image"` to use a PNG with graceful fallback to hand-drawn vector art or an emoji badge if no asset exists yet.
+- **`movement_style`** drives how the character crosses the screen (`walk_across`, `fly_across`, `float`, `launch_upward`, ...) - entrance and exit share one random side-to-side crossing, not a peek-in-and-retreat.
+- **`animation_type`** drives its idle motion once it lands (`bounce`, `float`, `pulse`, `hop`, `sway`, ...), reused across characters rather than hand-authored per character.
+- **`sound`** points to a short effect in `sounds/effects/`, played through `AudioPlayer` on every reminder.
 
 ---
 
 ##  Future Roadmap
 
-- Additional character packs (Seasonal: Santa, Ghost).
-- Sound pack expansions.
+- Additional character packs (Seasonal: Santa, Pumpkin), with real illustrated art sourced for each before they ship.
 - Multi-monitor explicit targeting (choosing which display the character appears on).
 - Apple HealthKit synchronization.
 
