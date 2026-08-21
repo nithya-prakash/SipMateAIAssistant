@@ -1,11 +1,11 @@
 {
   "id": "penguin",
   "name": "Penguin",
-  "emoji": "🐧",
+  "emoji": "\ud83d\udc27",
   "category": "sipmate_original",
   "personality": "Calm, cute, chill",
-  "renderer": "static_image",
-  "asset": "penguin.png",
+  "renderer": "lottie",
+  "asset": "penguin.json",
   "movement_style": "walk_across",
   "animation_type": "sway",
   "messages": [
