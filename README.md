@@ -1,9 +1,9 @@
-# Hydra 
+# SipMate
 **AI-Powered Animated Wellness Companion**
 
-Hydra is not just another boring notification app. It's a magical desktop companion built for macOS that reminds you to hydrate through delightful, non-intrusive animated characters that float across your screen. 
+SipMate is not just another boring notification app. It's a magical desktop companion built for macOS that reminds you to hydrate through delightful, non-intrusive animated characters that float across your screen. 
 
-Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hydrated without ever breaking your flow.
+Powered by local AI and strict macOS overlay policies, SipMate ensures you stay hydrated without ever breaking your flow.
 
 ---
 
@@ -12,29 +12,21 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 - **15 Unique Animated Characters**: From a propeller-spinning airplane to a fire-breathing dragon, every reminder is a surprise.
 - **Soft, Disney-style Motion**: Characters fly and walk in on arced, bouncy paths (not flat linear slides), land with a squash-and-stretch bounce, and are shaded with soft gradient highlights and a grounding drop shadow instead of flat vector fills.
 - **Unobtrusive Overlay**: Characters float natively over full-screen applications (like VS Code, Chrome, or Spotify) without stealing your keyboard focus or cluttering your Dock.
-- **AI Adaptive Scheduling**: Hydra learns your habits. A local Logistic Regression model analyzes when you accept or skip water breaks and dynamically adjusts the schedule to your optimal hydration times.
+- **AI Adaptive Scheduling**: SipMate learns your habits. A local Logistic Regression model analyzes when you accept or skip water breaks and dynamically adjusts the schedule to your optimal hydration times.
 - **Dynamic Messaging**: Characters have personalities! Messages adapt based on your current hydration streak and the time of day.
 - **Rich Insights Dashboard**: Track your consistency, best hydration hours, and missed times.
 
 ##  Demo
 
-![Hydra animated demo](docs/media/demo.gif)
+![SipMate animated demo](docs/media/demo.gif)
 
-*Dog, rocket, and ghost reminders back to back - entrance, landing bounce, and the drink/skip response.*
-
-<img src="docs/media/screenshot_rocket.png" width="420" alt="Rocket character reminder" /> <img src="docs/media/screenshot_ghost.png" width="420" alt="Ghost character reminder" />
-
-##  Screenshots
-
-<img width="1470" height="956" alt="Screenshot 2026-07-26 at 12 35 06" src="https://github.com/user-attachments/assets/6b4d2f23-bac2-42a8-b8b5-398058d0ca9c" />
-
-<img width="1470" height="956" alt="Screenshot 2026-07-26 at 12 35 40" src="https://github.com/user-attachments/assets/1b41e26c-d3a2-404c-92a8-0bf4f9c83a00" />
+*Dog, rocket, and cat reminders back to back - real illustrated animations, personality-driven messages, and the drink response.*
 
 ---
 
 ##  Architecture
 
-Hydra is completely background-driven, utilizing `PySide6` for its UI layer and raw `macOS AppKit` APIs to manipulate the window server.
+SipMate is completely background-driven, utilizing `PySide6` for its UI layer and raw `macOS AppKit` APIs to manipulate the window server.
 
 ```mermaid
 graph TD
@@ -60,8 +52,8 @@ graph TD
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/hydra.git
-   cd hydra
+   git clone git@github.com:nithya-prakash/SipmateAssistant.git
+   cd SipmateAssistant
    ```
 
 2. Set up a virtual environment:
@@ -75,20 +67,20 @@ graph TD
    pip install -r requirements.txt
    ```
 
-4. Run Hydra:
+4. Run SipMate:
    ```bash
    python main.py
    ```
 
-   Hydra runs quietly in the menu bar - a successful launch looks like this:
+   SipMate runs quietly in the menu bar - a successful launch looks like this:
 
-   ![Terminal demo of installing and launching Hydra](docs/media/terminal_demo.png)
+   ![Terminal demo of installing and launching SipMate](docs/media/terminal_demo.png)
 
 ---
 
 ##  AI Features
 
-Hydra puts privacy first. It does not send your data to the cloud.
+SipMate puts privacy first. It does not send your data to the cloud.
 - **Insights Engine**: Parses your local SQLite history to calculate consistency metrics.
 - **scikit-learn Scheduler**: Uses binary classification on your hydration logs (accepted vs skipped) based on the hour of the day to predict the highest probability of you drinking water.
 - **Procedural Personalities**: The Message Generator synthesizes text using templates driven by your active streak (e.g., "🔥 3x streak!").
@@ -97,7 +89,7 @@ Hydra puts privacy first. It does not send your data to the cloud.
 
 ##  Character Engine
 
-Hydra's characters are completely data-driven. Adding a new character takes only a few lines in a JSON manifest!
+SipMate's characters are completely data-driven. Adding a new character takes only a few lines in a JSON manifest!
 
 ```json
 {
