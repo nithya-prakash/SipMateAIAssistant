@@ -3,6 +3,7 @@ from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor, QAction
 from PySide6.QtCore import Qt, QObject
 from ui.settings_window import SettingsWindow
 from ui.insights_window import InsightsWindow
+from ui.character_collection_window import CharacterCollectionWindow
 
 class HydraTray(QObject):
     def __init__(self, app, overlay_window, settings_manager):
@@ -10,9 +11,10 @@ class HydraTray(QObject):
         self.app = app
         self.overlay_window = overlay_window
         self.settings_manager = settings_manager
-        
+
         self.settings_window = SettingsWindow(self.settings_manager)
         self.insights_window = InsightsWindow(self.overlay_window.tracker)
+        self.character_collection_window = CharacterCollectionWindow(self.settings_manager)
         
         self.tray_icon = QSystemTrayIcon()
         self.tray_icon.setIcon(self.create_placeholder_icon())
@@ -28,7 +30,11 @@ class HydraTray(QObject):
         self.action_insights = QAction("AI Insights Dashboard")
         self.action_insights.triggered.connect(self.insights_window.show)
         self.menu.addAction(self.action_insights)
-        
+
+        self.action_characters = QAction("Character Collection")
+        self.action_characters.triggered.connect(self.character_collection_window.show)
+        self.menu.addAction(self.action_characters)
+
         self.action_settings = QAction("Settings")
         self.action_settings.triggered.connect(self.settings_window.show)
         self.menu.addAction(self.action_settings)

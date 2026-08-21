@@ -1,6 +1,16 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QCheckBox, QPushButton
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QCheckBox, QPushButton, QComboBox
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
+
+CHARACTER_MODES = [
+    ("random", "Random - any of the 24 characters"),
+    ("single", "Single Character - whichever you Selected in the Collection"),
+    ("daily_rotation", "Daily Rotation - a new character each day"),
+    ("favorites", "Favorites - random from your favorited characters"),
+    ("sipmate_originals", "SipMate Originals only"),
+    ("princess_mode", "Princess Mode - Disney Princesses only"),
+    ("disney_favorites", "Disney Favorites - Elsa, Anna & Mirabel"),
+]
 
 class SettingsWindow(QWidget):
     def __init__(self, settings_manager):
@@ -10,7 +20,7 @@ class SettingsWindow(QWidget):
         
         self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.WindowStaysOnTopHint)
         self.setWindowTitle("SipMate Settings")
-        self.resize(300, 300)
+        self.resize(340, 440)
         self.setStyleSheet("background-color: #f5f5f7; color: #1d1d1f;")
         
         self.init_ui()
@@ -37,7 +47,22 @@ class SettingsWindow(QWidget):
         self.chk_sound.setChecked(self.settings_manager.settings.sound_enabled)
         self.chk_sound.toggled.connect(lambda checked: self.settings_manager.update(sound_enabled=checked))
         layout.addWidget(self.chk_sound)
-        
+
+        mode_label = QLabel("Character Mode")
+        mode_label.setFont(QFont("Arial", 13, QFont.Weight.Bold))
+        layout.addWidget(mode_label)
+
+        self.combo_mode = QComboBox()
+        for value, label in CHARACTER_MODES:
+            self.combo_mode.addItem(label, userData=value)
+        current = self.settings_manager.settings.character_mode
+        idx = next((i for i, (v, _) in enumerate(CHARACTER_MODES) if v == current), 0)
+        self.combo_mode.setCurrentIndex(idx)
+        self.combo_mode.currentIndexChanged.connect(
+            lambda i: self.settings_manager.update(character_mode=self.combo_mode.itemData(i))
+        )
+        layout.addWidget(self.combo_mode)
+
         layout.addStretch()
         
         close_btn = QPushButton("Save & Close")

@@ -1,13 +1,17 @@
 {
-    "id": "rocket",
-    "renderer": "vector",
-    "behavior": "launch_upward",
-    "personality": "energetic",
-    "messages": [
-        "Blast off to hydration! \ud83d\ude80"
-    ],
-    "effects": [
-        "fire_particles"
-    ],
-    "duration": 8
+  "id": "rocket",
+  "name": "Rocket",
+  "emoji": "\ud83d\ude80",
+  "category": "sipmate_original",
+  "personality": "Energetic, motivational",
+  "renderer": "lottie",
+  "asset": "rocket.json",
+  "movement_style": "launch_upward",
+  "animation_type": "launch",
+  "messages": [
+    "3\u2026 2\u2026 1\u2026 HYDRATE!",
+    "Prepare for hydration launch!",
+    "Fuel your body for liftoff!",
+    "Mission objective: drink water!"
+  ]
 }

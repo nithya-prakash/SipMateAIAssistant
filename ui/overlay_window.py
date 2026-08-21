@@ -4,16 +4,18 @@ from PySide6.QtGui import QRegion, QScreen
 from renderers.factory import RendererFactory
 from ui.speech_bubble import SpeechBubble
 from characters.registry import CharacterRegistry
+from characters.selector import CharacterSelector
 from animations.behaviors import AnimationBehaviors
 import random
 
 from core.mac_overlay import enforce_mac_overlay, debug_mac_overlay
 
 class OverlayWindow(QWidget):
-    def __init__(self, tracker):
+    def __init__(self, tracker, settings_manager=None):
         super().__init__()
         self.tracker = tracker
         self.registry = CharacterRegistry()
+        self.selector = CharacterSelector(self.registry, settings_manager) if settings_manager else None
         
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setWindowFlags(
@@ -33,7 +35,7 @@ class OverlayWindow(QWidget):
         self.character_widget = None
         self.speech_bubble = None
         
-        self.resize(500, 300)
+        self.resize(720, 340)
 
     def trigger_reminder(self, character_id=None):
         import time
@@ -41,6 +43,8 @@ class OverlayWindow(QWidget):
         
         if character_id:
             character = self.registry.get_character(character_id)
+        elif self.selector:
+            character = self.selector.select()
         else:
             character = self.registry.get_random_character()
         
@@ -92,6 +96,9 @@ class OverlayWindow(QWidget):
         self.setMask(region)
 
     def on_entrance_finished(self):
+        if hasattr(self.character_widget, "play_landing_bounce"):
+            self.character_widget.play_landing_bounce()
+
         from ai.message_generator import MessageGenerator
         message = MessageGenerator.generate_message(self.current_character, self.tracker)
         self.speech_bubble.set_text(message)
@@ -105,7 +112,10 @@ class OverlayWindow(QWidget):
         delay_sec = int(time.time() - getattr(self, 'trigger_time', time.time()))
         self.tracker.log_hydration(250)
         self.tracker.log_reminder(self.current_character.id, True, delay_sec)
-        
+
+        if hasattr(self.character_widget, "play_celebration"):
+            self.character_widget.play_celebration()
+
         # Replace text with toast
         self.speech_bubble.set_text("+1 hydration 💧\nGreat job!")
         self.speech_bubble.btn_drink.hide()

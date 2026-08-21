@@ -1,0 +1,16 @@
+{
+  "id": "mulan",
+  "name": "Mulan",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Strong, determined",
+  "renderer": "static_image",
+  "asset": "mulan.png",
+  "movement_style": "walk_across",
+  "animation_type": "bounce_soft",
+  "messages": [
+    "Be strong. Stay hydrated.",
+    "Take a sip and keep moving forward.",
+    "Hydration is part of the mission."
+  ]
+}

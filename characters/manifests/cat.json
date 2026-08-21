@@ -1,15 +1,17 @@
 {
-    "id": "cat",
-    "renderer": "vector",
-    "behavior": "walk_across",
-    "personality": "lazy",
-    "messages": [
-        "Meow \ud83d\ude3a\nEven cats need water.",
-        "Purrfect time for a drink!"
-    ],
-    "effects": [
-        "tail_swish",
-        "blink"
-    ],
-    "duration": 15
+  "id": "cat",
+  "name": "Cat",
+  "emoji": "\ud83d\udc31",
+  "category": "sipmate_original",
+  "personality": "Sassy, slightly sarcastic",
+  "renderer": "lottie",
+  "asset": "cat.json",
+  "movement_style": "walk_across",
+  "animation_type": "pulse",
+  "messages": [
+    "Meow. You've been staring at that screen too long. Drink.",
+    "I drink water. You should too.",
+    "Consider this your hydration intervention.",
+    "Yes, I'm judging your empty water bottle."
+  ]
 }

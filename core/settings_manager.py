@@ -1,6 +1,7 @@
 import json
 import os
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
+from typing import List
 from PySide6.QtCore import QObject, Signal
 
 @dataclass
@@ -14,6 +15,12 @@ class Settings:
     working_hours_end: int = 17
     paused: bool = False
     dark_mode: bool = True
+
+    # Character system: character_mode is one of "random", "single", "daily_rotation",
+    # "favorites", "sipmate_originals", "princess_mode", "disney_favorites".
+    character_mode: str = "random"
+    selected_character_id: str = "dog"
+    favorite_character_ids: List[str] = field(default_factory=list)
 
 class SettingsManager(QObject):
     settings_changed = Signal(Settings)

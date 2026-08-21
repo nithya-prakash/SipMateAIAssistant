@@ -1,15 +1,17 @@
 {
-    "id": "airplane",
-    "renderer": "vector",
-    "behavior": "fly_across",
-    "personality": "professional",
-    "messages": [
-        "Hydration flight incoming \ud83d\udca7\nDrink some water!",
-        "Cruising altitude reached.\nTime for a water break!"
-    ],
-    "effects": [
-        "smoke_trail",
-        "propeller"
-    ],
-    "duration": 15
+  "id": "airplane",
+  "name": "Aeroplane",
+  "emoji": "\u2708\ufe0f",
+  "category": "sipmate_original",
+  "personality": "Adventurous, energetic",
+  "renderer": "lottie",
+  "asset": "airplane.json",
+  "movement_style": "fly_across",
+  "animation_type": "tilt",
+  "messages": [
+    "Hydration check! Let's keep flying!",
+    "Prepare for takeoff\u2026 after a sip!",
+    "Your next destination: the water bottle!",
+    "Fuel up! Time for some water!"
+  ]
 }

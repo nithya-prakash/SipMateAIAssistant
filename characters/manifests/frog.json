@@ -1,0 +1,17 @@
+{
+  "id": "frog",
+  "name": "Frog",
+  "emoji": "\ud83d\udc38",
+  "category": "sipmate_original",
+  "personality": "Playful, energetic",
+  "renderer": "lottie",
+  "asset": "frog.json",
+  "movement_style": "walk_across",
+  "animation_type": "hop",
+  "messages": [
+    "Ribbit! Time for a little hydration hop!",
+    "Hop over to your water bottle!",
+    "One big sip, then back to work!",
+    "Ribbit! Your water break has arrived!"
+  ]
+}

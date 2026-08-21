@@ -1,0 +1,16 @@
+{
+  "id": "pocahontas",
+  "name": "Pocahontas",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Calm, nature-focused",
+  "renderer": "static_image",
+  "asset": "pocahontas.png",
+  "movement_style": "walk_across",
+  "animation_type": "float",
+  "messages": [
+    "Listen to what your body is telling you. Time for water.",
+    "Take a moment to refresh yourself.",
+    "Stay connected to what your body needs."
+  ]
+}

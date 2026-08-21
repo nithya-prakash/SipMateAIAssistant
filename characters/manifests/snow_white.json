@@ -1,0 +1,16 @@
+{
+  "id": "snow_white",
+  "name": "Snow White",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Cheerful, gentle",
+  "renderer": "static_image",
+  "asset": "snow_white.png",
+  "movement_style": "walk_to_center",
+  "animation_type": "float",
+  "messages": [
+    "A little sip will make your day brighter!",
+    "Take a refreshing sip, dear!",
+    "A happy day starts with good hydration."
+  ]
+}

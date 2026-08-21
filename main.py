@@ -24,7 +24,7 @@ def main():
     
     settings_manager = SettingsManager(DATA_DIR)
     tracker = HydrationTracker()
-    overlay = OverlayWindow(tracker)
+    overlay = OverlayWindow(tracker, settings_manager)
     tray = HydraTray(app, overlay, settings_manager)
     
     # Setup AI Scheduler

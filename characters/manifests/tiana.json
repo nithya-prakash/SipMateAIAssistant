@@ -1,0 +1,16 @@
+{
+  "id": "tiana",
+  "name": "Tiana",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Hardworking, optimistic",
+  "renderer": "static_image",
+  "asset": "tiana.png",
+  "movement_style": "walk_across",
+  "animation_type": "pulse",
+  "messages": [
+    "Before we get back to work, let's take a refreshing sip!",
+    "A little water break never hurt anyone!",
+    "Take care of yourself while chasing those dreams."
+  ]
+}

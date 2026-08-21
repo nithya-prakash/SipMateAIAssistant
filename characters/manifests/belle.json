@@ -1,0 +1,16 @@
+{
+  "id": "belle",
+  "name": "Belle",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Intelligent, thoughtful",
+  "renderer": "static_image",
+  "asset": "belle.png",
+  "movement_style": "walk_to_center",
+  "animation_type": "rotate_small",
+  "messages": [
+    "A good book and a glass of water — perfect.",
+    "Take a little break and have some water.",
+    "A healthy mind needs a hydrated body."
+  ]
+}

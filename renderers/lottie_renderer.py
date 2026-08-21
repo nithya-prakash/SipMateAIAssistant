@@ -19,12 +19,17 @@ class LottieRenderer(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.label)
         
-        # Load lottie file
-        # Check if file exists, else use fallback
-        filepath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", f"{self.character.id}.json")
-        if not os.path.exists(filepath):
-            # Fallback path if it's in manifests directly
-            filepath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "characters", "manifests", f"{self.character.id}.json")
+        # Load lottie file. Prefer the manifest's own asset filename under
+        # assets/characters/ (the same convention StaticCharacterWidget uses);
+        # fall back to the older assets/<id>.json / manifests/<id>.json layout.
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        candidates = []
+        if getattr(self.character, "asset_path", ""):
+            candidates.append(os.path.join(base_dir, "assets", "characters", self.character.asset_path))
+        candidates.append(os.path.join(base_dir, "assets", f"{self.character.id}.json"))
+        candidates.append(os.path.join(base_dir, "characters", "manifests", f"{self.character.id}.json"))
+
+        filepath = next((p for p in candidates if os.path.exists(p)), candidates[-1])
 
         if os.path.exists(filepath):
             self.anim = rlottie.LottieAnimation.from_file(filepath)
@@ -59,21 +64,21 @@ class LottieRenderer(QWidget):
         
         width = 150
         height = 150
-        
-        # Using lottie_animation_render
-        # It takes (frame_num, width, height) and returns a tuple (buffer, bytes_per_line) or something similar.
-        # Let's wrap in try/except to inspect what it returns.
+
         try:
-            buf = self.anim.lottie_animation_render(self.current_frame, width, height)
-            # rlottie_python's lottie_animation_render returns a numpy array or bytes?
-            # actually rlottie_python usually returns a 3D numpy array (height, width, 4) in BGRA.
-            if hasattr(buf, "shape"): # numpy array
-                img = QImage(buf.data, width, height, width * 4, QImage.Format.Format_ARGB32_Premultiplied)
-                # ARGB32 vs BGRA - might need to swap if colors are weird, but usually QImage handles it
-                # rlottie uses BGRA32 natively. QImage.Format_ARGB32_Premultiplied is usually BGRA under the hood in Qt on little endian.
-            else:
-                img = QImage(buf, width, height, width * 4, QImage.Format.Format_ARGB32_Premultiplied)
-                
+            # rlottie_python's signature is (frame_num, buffer_size, width, height,
+            # bytes_per_line) - all keyword-safe. It returns raw ARGB32-premultiplied
+            # bytes, not a numpy array or PIL image.
+            buf = self.anim.lottie_animation_render(
+                frame_num=self.current_frame,
+                width=width,
+                height=height,
+                bytes_per_line=width * 4,
+            )
+            img = QImage(buf, width, height, width * 4, QImage.Format.Format_ARGB32_Premultiplied)
+            # QImage doesn't copy the buffer by default - keep a reference alive so it
+            # isn't garbage-collected out from under the pixmap.
+            self._last_buf = buf
             self.label.setPixmap(QPixmap.fromImage(img))
         except Exception as e:
             import logging

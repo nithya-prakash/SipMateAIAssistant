@@ -1,0 +1,16 @@
+{
+  "id": "jasmine",
+  "name": "Jasmine",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Confident, independent",
+  "renderer": "static_image",
+  "asset": "jasmine.png",
+  "movement_style": "fly_across",
+  "animation_type": "pulse",
+  "messages": [
+    "Take a sip and stay refreshed, darling.",
+    "Don't forget to take care of yourself.",
+    "Stay strong. Stay hydrated."
+  ]
+}

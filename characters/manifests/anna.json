@@ -1,0 +1,16 @@
+{
+  "id": "anna",
+  "name": "Anna",
+  "emoji": "❄️",
+  "category": "disney_favorite",
+  "personality": "Cheerful, energetic, friendly",
+  "renderer": "static_image",
+  "asset": "anna.png",
+  "movement_style": "walk_across",
+  "animation_type": "bounce",
+  "messages": [
+    "Come on! One more sip!",
+    "Hydration break! Let's go!",
+    "You've got this — now drink some water!"
+  ]
+}

@@ -1,14 +1,17 @@
 {
-    "id": "dog",
-    "renderer": "vector",
-    "behavior": "walk_across",
-    "personality": "playful",
-    "messages": [
-        "Woof! Did you drink water today?",
-        "Fetch some water!"
-    ],
-    "effects": [
-        "tail_wag"
-    ],
-    "duration": 12
+  "id": "dog",
+  "name": "Dog",
+  "emoji": "\ud83d\udc36",
+  "category": "sipmate_original",
+  "personality": "Excited, loyal, friendly",
+  "renderer": "lottie",
+  "asset": "dog.json",
+  "movement_style": "walk_across",
+  "animation_type": "bounce",
+  "messages": [
+    "Woof! I got my water. Your turn!",
+    "Your bottle misses you!",
+    "Big sip! You can do it!",
+    "Woof woof! Hydration break!"
+  ]
 }

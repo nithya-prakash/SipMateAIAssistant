@@ -1,13 +1,17 @@
 {
-    "id": "penguin",
-    "renderer": "vector",
-    "behavior": "walk_across",
-    "personality": "cool",
-    "messages": [
-        "Stay cool. Drink water. \ud83d\udc27"
-    ],
-    "effects": [
-        "waddle"
-    ],
-    "duration": 15
+  "id": "penguin",
+  "name": "Penguin",
+  "emoji": "🐧",
+  "category": "sipmate_original",
+  "personality": "Calm, cute, chill",
+  "renderer": "static_image",
+  "asset": "penguin.png",
+  "movement_style": "walk_across",
+  "animation_type": "sway",
+  "messages": [
+    "Stay cool, stay hydrated!",
+    "A little sip to keep you going.",
+    "Take a refreshing break!",
+    "Cool penguin reminder: drink some water."
+  ]
 }

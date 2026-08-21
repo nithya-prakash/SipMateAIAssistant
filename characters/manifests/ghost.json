@@ -1,13 +1,17 @@
 {
-    "id": "ghost",
-    "renderer": "vector",
-    "behavior": "float",
-    "personality": "spooky",
-    "messages": [
-        "Boo! \ud83d\udc7b\nDid I scare you into drinking water?"
-    ],
-    "effects": [
-        "fade"
-    ],
-    "duration": 10
+  "id": "ghost",
+  "name": "Ghost",
+  "emoji": "\ud83d\udc7b",
+  "category": "sipmate_original",
+  "personality": "Cute, playful, slightly spooky",
+  "renderer": "lottie",
+  "asset": "ghost.json",
+  "movement_style": "float",
+  "animation_type": "float",
+  "messages": [
+    "Boo! Don't let your water disappear!",
+    "Even ghosts need hydration!",
+    "Spooky reminder: drink some water!",
+    "I floated all the way here to remind you!"
+  ]
 }

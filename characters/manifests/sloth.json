@@ -1,0 +1,17 @@
+{
+  "id": "sloth",
+  "name": "Sloth",
+  "emoji": "\ud83e\udda5",
+  "category": "sipmate_original",
+  "personality": "Lazy, funny, relatable",
+  "renderer": "lottie",
+  "asset": "sloth.json",
+  "movement_style": "walk_across",
+  "animation_type": "slow_float",
+  "messages": [
+    "Even I managed to drink water\u2026 your turn.",
+    "No rush\u2026 but you should probably drink.",
+    "Take it slow. Take a sip.",
+    "Hydration can wait\u2026 actually, no. Drink now."
+  ]
+}

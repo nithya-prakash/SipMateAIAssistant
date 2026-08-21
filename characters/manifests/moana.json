@@ -1,0 +1,16 @@
+{
+  "id": "moana",
+  "name": "Moana",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Adventurous, determined",
+  "renderer": "static_image",
+  "asset": "moana.png",
+  "movement_style": "fly_across",
+  "animation_type": "slide_fade",
+  "messages": [
+    "The ocean isn't the only thing that needs water!",
+    "Keep moving forward — and don't forget to hydrate!",
+    "The journey continues after a good sip."
+  ]
+}

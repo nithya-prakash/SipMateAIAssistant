@@ -1,0 +1,16 @@
+{
+  "id": "cinderella",
+  "name": "Cinderella",
+  "emoji": "👑",
+  "category": "disney_princess",
+  "personality": "Elegant, kind",
+  "renderer": "static_image",
+  "asset": "cinderella.png",
+  "movement_style": "fly_across",
+  "animation_type": "slide_fade",
+  "messages": [
+    "Before the clock strikes twelve… take a sip!",
+    "A little hydration magic, please.",
+    "Your water break has arrived!"
+  ]
+}

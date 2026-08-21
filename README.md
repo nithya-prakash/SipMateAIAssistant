@@ -10,10 +10,19 @@ Powered by local AI and strict macOS overlay policies, Hydra ensures you stay hy
 ##  Features
 
 - **15 Unique Animated Characters**: From a propeller-spinning airplane to a fire-breathing dragon, every reminder is a surprise.
+- **Soft, Disney-style Motion**: Characters fly and walk in on arced, bouncy paths (not flat linear slides), land with a squash-and-stretch bounce, and are shaded with soft gradient highlights and a grounding drop shadow instead of flat vector fills.
 - **Unobtrusive Overlay**: Characters float natively over full-screen applications (like VS Code, Chrome, or Spotify) without stealing your keyboard focus or cluttering your Dock.
 - **AI Adaptive Scheduling**: Hydra learns your habits. A local Logistic Regression model analyzes when you accept or skip water breaks and dynamically adjusts the schedule to your optimal hydration times.
 - **Dynamic Messaging**: Characters have personalities! Messages adapt based on your current hydration streak and the time of day.
 - **Rich Insights Dashboard**: Track your consistency, best hydration hours, and missed times.
+
+##  Demo
+
+![Hydra animated demo](docs/media/demo.gif)
+
+*Dog, rocket, and ghost reminders back to back - entrance, landing bounce, and the drink/skip response.*
+
+<img src="docs/media/screenshot_rocket.png" width="420" alt="Rocket character reminder" /> <img src="docs/media/screenshot_ghost.png" width="420" alt="Ghost character reminder" />
 
 ##  Screenshots
 
@@ -70,6 +79,10 @@ graph TD
    ```bash
    python main.py
    ```
+
+   Hydra runs quietly in the menu bar - a successful launch looks like this:
+
+   ![Terminal demo of installing and launching Hydra](docs/media/terminal_demo.png)
 
 ---
 
