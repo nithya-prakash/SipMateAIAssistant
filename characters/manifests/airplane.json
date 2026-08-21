@@ -13,5 +13,6 @@
     "Prepare for takeoff\u2026 after a sip!",
     "Your next destination: the water bottle!",
     "Fuel up! Time for some water!"
-  ]
+  ],
+  "sound": "airplane.mp3"
 }

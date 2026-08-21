@@ -6,6 +6,7 @@ from ui.speech_bubble import SpeechBubble
 from characters.registry import CharacterRegistry
 from characters.selector import CharacterSelector
 from animations.behaviors import AnimationBehaviors
+from sounds.audio_player import AudioPlayer
 import random
 
 from core.mac_overlay import enforce_mac_overlay, debug_mac_overlay
@@ -14,8 +15,10 @@ class OverlayWindow(QWidget):
     def __init__(self, tracker, settings_manager=None):
         super().__init__()
         self.tracker = tracker
+        self.settings_manager = settings_manager
         self.registry = CharacterRegistry()
         self.selector = CharacterSelector(self.registry, settings_manager) if settings_manager else None
+        self.audio_player = AudioPlayer()
         
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setWindowFlags(
@@ -52,7 +55,10 @@ class OverlayWindow(QWidget):
             self.character_widget.deleteLater()
         if self.speech_bubble:
             self.speech_bubble.deleteLater()
-            
+
+        if not self.settings_manager or self.settings_manager.settings.sound_enabled:
+            self.audio_player.play_for_character(character.id)
+
         self.character_widget = RendererFactory.create_renderer(character)
         self.speech_bubble = SpeechBubble("")
         

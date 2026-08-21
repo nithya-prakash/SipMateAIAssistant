@@ -26,5 +26,6 @@ class Character:
     animation_type: str    # how it behaves once on screen (bounce, float, pulse, hop, ...)
     messages: List[str] = field(default_factory=list)
     asset_path: str = ""   # relative path under assets/characters/, may not exist yet
+    sound_path: str = ""   # filename under sounds/effects/, may not exist yet
     emoji: str = ""
     metadata: Dict[str, Any] = field(default_factory=dict)

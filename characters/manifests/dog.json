@@ -13,5 +13,6 @@
     "Your bottle misses you!",
     "Big sip! You can do it!",
     "Woof woof! Hydration break!"
-  ]
+  ],
+  "sound": "dog.mp3"
 }

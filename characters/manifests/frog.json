@@ -13,5 +13,6 @@
     "Hop over to your water bottle!",
     "One big sip, then back to work!",
     "Ribbit! Your water break has arrived!"
-  ]
+  ],
+  "sound": "frog.mp3"
 }

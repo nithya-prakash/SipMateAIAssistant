@@ -13,5 +13,6 @@
     "I drink water. You should too.",
     "Consider this your hydration intervention.",
     "Yes, I'm judging your empty water bottle."
-  ]
+  ],
+  "sound": "cat.mp3"
 }

@@ -13,5 +13,6 @@
     "Prepare for hydration launch!",
     "Fuel your body for liftoff!",
     "Mission objective: drink water!"
-  ]
+  ],
+  "sound": "rocket.mp3"
 }

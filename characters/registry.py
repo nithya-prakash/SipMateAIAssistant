@@ -34,6 +34,7 @@ class CharacterRegistry:
                     animation_type=data.get("animation_type", "bounce"),
                     messages=data.get("messages", []),
                     asset_path=data.get("asset", ""),
+                    sound_path=data.get("sound", ""),
                     emoji=data.get("emoji", ""),
                     metadata=data.get("metadata", {}),
                 )

@@ -13,5 +13,6 @@
     "A little sip to keep you going.",
     "Take a refreshing break!",
     "Cool penguin reminder: drink some water."
-  ]
+  ],
+  "sound": "penguin.mp3"
 }
