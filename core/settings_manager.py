@@ -17,7 +17,7 @@ class Settings:
     dark_mode: bool = True
 
     # Character system: character_mode is one of "random", "single", "daily_rotation",
-    # "favorites", "sipmate_originals", "princess_mode", "disney_favorites".
+    # "favorites", "sipmate_originals".
     character_mode: str = "random"
     selected_character_id: str = "dog"
     favorite_character_ids: List[str] = field(default_factory=list)

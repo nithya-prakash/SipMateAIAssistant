@@ -3,13 +3,10 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 
 CHARACTER_MODES = [
-    ("random", "Random - any of the 24 characters"),
+    ("random", "Random - any of the 8 characters"),
     ("single", "Single Character - whichever you Selected in the Collection"),
     ("daily_rotation", "Daily Rotation - a new character each day"),
     ("favorites", "Favorites - random from your favorited characters"),
-    ("sipmate_originals", "SipMate Originals only"),
-    ("princess_mode", "Princess Mode - Disney Princesses only"),
-    ("disney_favorites", "Disney Favorites - Elsa, Anna & Mirabel"),
 ]
 
 class SettingsWindow(QWidget):

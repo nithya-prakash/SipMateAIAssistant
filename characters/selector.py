@@ -34,12 +34,8 @@ class CharacterSelector:
         if mode == "sipmate_originals":
             return self.registry.get_random_character(pool=self.registry.get_by_category(CharacterCategory.SIPMATE_ORIGINAL))
 
-        if mode == "princess_mode":
-            return self.registry.get_random_character(pool=self.registry.get_by_category(CharacterCategory.DISNEY_PRINCESS))
-
-        if mode == "disney_favorites":
-            return self.registry.get_random_character(pool=self.registry.get_by_category(CharacterCategory.DISNEY_FAVORITE))
-
+        # Any other/stale mode value (e.g. a leftover "princess_mode" from an old
+        # settings.json) falls back to plain random rather than erroring.
         return self.registry.get_random_character()
 
     def _daily_rotation(self):

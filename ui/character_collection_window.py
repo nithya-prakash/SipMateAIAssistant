@@ -5,15 +5,14 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
-from characters.character import CharacterCategory
+from characters.character import CharacterCategory, RendererType
 from characters.registry import CharacterRegistry
+from renderers.factory import RendererFactory
 from renderers.static_character import StaticCharacterWidget
 
 _CATEGORY_LABELS = {
     "all": "All",
     CharacterCategory.SIPMATE_ORIGINAL: "🐾 SipMate Originals",
-    CharacterCategory.DISNEY_PRINCESS: "👑 Disney Princesses",
-    CharacterCategory.DISNEY_FAVORITE: "✨ Disney Favorites",
 }
 
 _CARD_STYLE = """
@@ -42,7 +41,13 @@ class CharacterCard(QFrame):
         layout.setContentsMargins(12, 12, 12, 12)
         layout.setSpacing(6)
 
-        self.visual = StaticCharacterWidget(character, autoplay=False)
+        if character.renderer_type == RendererType.LOTTIE:
+            # Lottie renderers have no pause/autoplay knob, and with only 8
+            # characters total, letting them play continuously in the grid is
+            # cheap and looks better than a frozen first frame.
+            self.visual = RendererFactory.create_renderer(character)
+        else:
+            self.visual = StaticCharacterWidget(character, autoplay=False)
         row = QHBoxLayout()
         row.addStretch()
         row.addWidget(self.visual)
@@ -117,7 +122,8 @@ class CharacterCard(QFrame):
         self.on_changed()
 
     def _preview(self):
-        self.visual.start_preview()
+        if hasattr(self.visual, "start_preview"):
+            self.visual.start_preview()  # Lottie cards are already playing continuously
         if self.character.messages:
             self.preview_label.setText(random.choice(self.character.messages))
 
