@@ -1,9 +1,12 @@
+import os
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu
 from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor, QAction
 from PySide6.QtCore import Qt, QObject
 from ui.settings_window import SettingsWindow
 from ui.insights_window import InsightsWindow
 from ui.character_collection_window import CharacterCollectionWindow
+
+_ICON_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "icon")
 
 class HydraTray(QObject):
     def __init__(self, app, overlay_window, settings_manager):
@@ -15,9 +18,10 @@ class HydraTray(QObject):
         self.settings_window = SettingsWindow(self.settings_manager)
         self.insights_window = InsightsWindow(self.overlay_window.tracker)
         self.character_collection_window = CharacterCollectionWindow(self.settings_manager)
-        
+
         self.tray_icon = QSystemTrayIcon()
-        self.tray_icon.setIcon(self.create_placeholder_icon())
+        self.tray_icon.setIcon(self.load_icon())
+        self.app.setWindowIcon(self.load_icon())
         
         self.menu = QMenu()
         
@@ -48,19 +52,31 @@ class HydraTray(QObject):
         self.tray_icon.setContextMenu(self.menu)
         self.tray_icon.show()
 
-    def create_placeholder_icon(self):
+    def load_icon(self) -> QIcon:
+        master_path = os.path.join(_ICON_DIR, "icon_master.png")
+        if os.path.exists(master_path):
+            icon = QIcon()
+            master = QPixmap(master_path)
+            for size in (16, 22, 32, 44, 64):
+                icon.addPixmap(master.scaled(size, size, Qt.AspectRatioMode.KeepAspectRatio,
+                                              Qt.TransformationMode.SmoothTransformation))
+            return icon
+        return self._draw_placeholder_icon()
+
+    def _draw_placeholder_icon(self) -> QIcon:
+        """Fallback if assets/icon/icon_master.png is ever missing."""
         pixmap = QPixmap(32, 32)
         pixmap.fill(Qt.GlobalColor.transparent)
-        
+
         painter = QPainter(pixmap)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        
+
         painter.setBrush(QColor(0, 150, 255))
         painter.setPen(Qt.PenStyle.NoPen)
         painter.drawEllipse(4, 4, 24, 24)
-        
+
         painter.setBrush(QColor(255, 255, 255, 200))
         painter.drawEllipse(8, 8, 8, 8)
-        
+
         painter.end()
         return QIcon(pixmap)
