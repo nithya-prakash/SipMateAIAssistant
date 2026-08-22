@@ -79,7 +79,7 @@ class StaticCharacterWidget(QWidget):
 
     def start_preview(self, duration_ms=2500):
         """Run the idle animation for a little while, then settle back to a static
-        pose - used by the Character Collection grid, where 24 cards animating
+        pose - used by the Character Collection grid, where every card animating
         nonstop at once would be wasteful and distracting."""
         if not self.timer.isActive():
             self.timer.start(33)
