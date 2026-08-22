@@ -87,6 +87,10 @@ SipMate puts privacy first. It does not send your data to the cloud.
 - **scikit-learn Scheduler**: Uses binary classification on your hydration logs (accepted vs skipped) based on the hour of the day to predict the highest probability of you drinking water.
 - **Procedural Personalities**: The Message Generator synthesizes text using templates driven by your active streak (e.g., "🔥 3x streak!").
 
+<img src="docs/media/insights_dashboard.png" width="360" alt="SipMate AI Insights dashboard showing best hydration time, when you usually forget, and consistency percentage" />
+
+*The AI Insights dashboard (tray menu → AI Insights Dashboard), built from real logged reminders - best hydration hour, when you tend to forget, and overall consistency.*
+
 ---
 
 ##  Character Engine

@@ -11,7 +11,7 @@ class InsightsWindow(QWidget):
         self.engine = InsightsEngine(self.tracker)
         
         self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.WindowStaysOnTopHint)
-        self.setWindowTitle("Hydra AI Insights")
+        self.setWindowTitle("SipMate AI Insights")
         self.resize(350, 400)
         self.setStyleSheet("background-color: #1E1E1E; color: white;")
         
@@ -22,7 +22,7 @@ class InsightsWindow(QWidget):
         layout.setContentsMargins(30, 30, 30, 30)
         layout.setSpacing(20)
         
-        title = QLabel("🤖 Hydra learned your habits:")
+        title = QLabel("🤖 SipMate learned your habits:")
         title.setFont(QFont("Arial", 16, QFont.Weight.Bold))
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(title)
