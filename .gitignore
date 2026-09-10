@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 .DS_Store
 venv/
+data/
 
 # PyInstaller build output - regenerate with scripts/build_app.sh
 build/

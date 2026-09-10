@@ -1,5 +1,11 @@
-PySide6>=6.5.0
-scikit-learn>=1.3.0
-numpy>=1.24.0
-pyobjc-framework-Cocoa>=10.0; sys_platform == "darwin"
-rlottie-python>=1.3.0
+PySide6>=6.10,<7
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+rlottie-python>=1.3.8,<2
+
+# Platform-specific overlay support — only the one matching sys.platform
+# actually installs. macOS is the only one built and verified on real
+# hardware; Windows/Linux are best-effort (see README "Platform support").
+pyobjc-framework-Cocoa>=10; sys_platform == "darwin"
+pywin32>=306; sys_platform == "win32"
+python-xlib>=0.33; sys_platform == "linux"

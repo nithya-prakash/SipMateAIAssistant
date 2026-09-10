@@ -80,11 +80,39 @@ graph TD
 
 ---
 
-##  AI Features
+## 🖥️ Platform support
+
+| Platform | Status | Mechanism |
+|---|---|---|
+| macOS | **Built and verified** on real hardware — confirmed the overlay stays above other apps (Chrome, VS Code, ...) across app switches and Spaces | `core/mac_overlay.py`: PyObjC sets `NSScreenSaverWindowLevel`, `NSWindowCollectionBehaviorCanJoinAllSpaces`/`FullScreenAuxiliary`, `hidesOnDeactivate=NO`; `NSApplicationActivationPolicyAccessory` hides the Dock icon |
+| Windows | **Best-effort, unverified** — this project has only ever run on macOS, there is no Windows machine to test on | `core/windows_overlay.py`: `pywin32`, `SetWindowPos(HWND_TOPMOST)` + `WS_EX_NOACTIVATE` + `WS_EX_TOOLWINDOW` |
+| Linux | **Best-effort, unverified**, and the roughest of the three — Linux WM behavior is inherently the least uniform | `core/linux_overlay.py`: raw Xlib, `_NET_WM_STATE_ABOVE` + `_NET_WM_STATE_SKIP_TASKBAR` EWMH hints (X11/XWayland only — no native-Wayland equivalent exists via Qt's `winId()`) |
+
+`core/overlay_platform.py` is the single dispatch point the app actually calls;
+it picks the right module by `sys.platform` and never lets a missing
+platform dependency or a failed call crash the app — worst case, the overlay
+just falls back to plain Qt always-on-top with no OS-native reinforcement.
+
+---
+
+## 🤖 AI Features
 
 SipMate puts privacy first. It does not send your data to the cloud.
-- **Insights Engine**: Parses your local SQLite history to calculate consistency metrics.
-- **scikit-learn Scheduler**: Uses binary classification on your hydration logs (accepted vs skipped) based on the hour of the day to predict the highest probability of you drinking water.
+- **Adaptive Scheduler — actually evaluated, not just fit**: `ai/model_evaluator.py`
+  fits both `LogisticRegression` and `RandomForestClassifier` on cyclically-encoded
+  hour/day-of-week features, cross-validates each with stratified k-fold (this is a
+  small, single-user dataset, so a single train/test split would be too noisy to
+  trust), and keeps whichever one actually generalizes better on held-out folds —
+  reported by accuracy, precision, recall, and ROC-AUC, plus a permutation-importance
+  summary of which factor (time of day vs. day of week) the winning model leans on
+  most. All of this is surfaced in the AI Insights window, not just used silently.
+  Below the training threshold (20 samples, ≥3 of each outcome, enough per class to
+  cross-validate) it stays honestly "not trained yet" and falls back to your fixed
+  reminder interval — an AI failure or a cold start never stops reminders.
+- **Insights Engine**: Parses your local SQLite history to calculate consistency
+  metrics and ranks hours by *success rate* (accepted / shown), not raw volume, with
+  a minimum-sample reliability filter so a single lucky accept can't look like a
+  perfect hour.
 - **Procedural Personalities**: The Message Generator synthesizes text using templates driven by your active streak (e.g., "🔥 3x streak!").
 
 <img src="docs/media/insights_dashboard.png" width="360" alt="SipMate AI Insights dashboard showing best hydration time, when you usually forget, and consistency percentage" />

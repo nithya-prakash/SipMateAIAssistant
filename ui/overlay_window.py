@@ -9,7 +9,7 @@ from animations.behaviors import AnimationBehaviors
 from sounds.audio_player import AudioPlayer
 import random
 
-from core.mac_overlay import enforce_mac_overlay, debug_mac_overlay
+from core.overlay_platform import enforce_overlay as _enforce_overlay, debug_overlay as _debug_overlay
 
 class OverlayWindow(QWidget):
     def __init__(self, tracker, settings_manager=None):
@@ -91,7 +91,7 @@ class OverlayWindow(QWidget):
 
     def enforce_overlay(self):
         if self.isVisible():
-            enforce_mac_overlay(int(self.winId()))
+            _enforce_overlay(int(self.winId()))
 
     def update_click_mask(self):
         region = QRegion()
@@ -150,4 +150,4 @@ class OverlayWindow(QWidget):
 
     def show_safe_overlay(self):
         self.trigger_reminder()
-        debug_mac_overlay(int(self.winId()))
+        _debug_overlay(int(self.winId()))

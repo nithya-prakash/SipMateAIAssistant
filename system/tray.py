@@ -9,14 +9,15 @@ from ui.character_collection_window import CharacterCollectionWindow
 _ICON_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "icon")
 
 class HydraTray(QObject):
-    def __init__(self, app, overlay_window, settings_manager):
+    def __init__(self, app, overlay_window, settings_manager, adaptive_scheduler=None):
         super().__init__()
         self.app = app
         self.overlay_window = overlay_window
         self.settings_manager = settings_manager
+        self.adaptive_scheduler = adaptive_scheduler
 
         self.settings_window = SettingsWindow(self.settings_manager)
-        self.insights_window = InsightsWindow(self.overlay_window.tracker)
+        self.insights_window = InsightsWindow(self.overlay_window.tracker, self.adaptive_scheduler)
         self.character_collection_window = CharacterCollectionWindow(self.settings_manager)
 
         self.tray_icon = QSystemTrayIcon()
